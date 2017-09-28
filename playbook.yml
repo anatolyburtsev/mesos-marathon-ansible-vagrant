@@ -55,5 +55,7 @@
         service: name=mesos-master state=stopped enabled=no
       - name: kill the slave state
         file: path=/tmp/mesos* state=absent
+      - name: make sure mesos-slave is running
+        service: name=mesos-slave state=started enabled=yes
       - name: start docker
         service: name=docker state=started enabled=yes
